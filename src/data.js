@@ -5,11 +5,11 @@ import portfolioImg from "./assets/portfolio.png"; // Make sure the extension ma
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Dashboard",
+    title: "E-Commerce Website",
     description:
-      "A responsive dashboard for tracking sales and inventory using React and Tailwind.",
+      "A responsive e-commerce website built with Wordpress and Breakdance.",
     image: dashboardImg, // We use the variable name here, not a string
-    link: "#",
+    link: "https:www.rlpartssupply.com",
   },
   {
     id: 2,
