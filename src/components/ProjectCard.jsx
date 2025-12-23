@@ -1,28 +1,30 @@
 import React from 'react';
-import Tilt from 'react-parallax-tilt'; // Import the library
+import Tilt from 'react-parallax-tilt';
 
 const ProjectCard = ({ project }) => {
   return (
-    // Wrap the card in Tilt
     <Tilt 
-      glareEnable={true} 
-      glareMaxOpacity={0.3} 
-      glareColor="#ffffff" 
-      glarePosition="all" 
+      className="flex flex-col h-full" // CRITICAL: This keeps the layout intact
+      perspective={1000}
+      glareEnable={true}
+      glareMaxOpacity={0.25}
       scale={1.02}
-      className="h-full" // Ensure it stretches
+      transitionSpeed={1000}
     >
-      <div className="bg-charcoal-light rounded-lg overflow-hidden border border-charcoal-dark h-full flex flex-col hover:border-accent transition-colors duration-300">
-        <div className="relative overflow-hidden shrink-0">
+      <div className="bg-charcoal-light rounded-lg overflow-hidden border border-charcoal-dark flex flex-col h-full group hover:border-accent transition-colors duration-300 hover:shadow-2xl hover:shadow-accent/40">
+        
+        {/* Image Container - Strictly enforced height */}
+        <div className="relative w-full h-48 overflow-hidden shrink-0">
           <img 
             src={project.image} 
             alt={project.title} 
-            className="w-full h-48 object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
         
+        {/* Content */}
         <div className="p-6 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold mb-2 text-white">
+          <h3 className="text-xl font-bold mb-2 text-white group-hover:text-accent transition-colors">
             {project.title}
           </h3>
           <p className="text-gray-300 mb-4 flex-grow">{project.description}</p>
@@ -35,6 +37,7 @@ const ProjectCard = ({ project }) => {
             </a>
           </div>
         </div>
+
       </div>
     </Tilt>
   );
