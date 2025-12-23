@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { projects } from "./data";
@@ -8,8 +8,24 @@ import ContactForm from "./components/ContactForm";
 import profilePic from "./assets/profile.jpg"; 
 
 function App() {
+  // 1. Set up the scroll tracker
+  const { scrollYProgress } = useScroll();
+  
+  // 2. Make it smooth
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <div className="min-h-screen">
+      
+      {/* Scroll Progress Bar (Added Here) */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-50"
+        style={{ scaleX }}
+      />
       
       {/* Navbar */}
       <nav className="flex items-center justify-between p-6 bg-charcoal-dark/90 backdrop-blur sticky top-0 z-10 border-b border-charcoal-light">
@@ -29,7 +45,7 @@ function App() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl font-extrabold mb-4 text-white">
-            Hi, I'm <span className="text-accent">Brandon</span>
+            Hi, I'm <span className="text-accent">Brandon Lewandowski</span>
           </h2>
           <div className="text-xl text-gray-300 h-20 md:h-auto mb-6">
             <span className="mr-2">I build</span>
@@ -51,9 +67,9 @@ function App() {
             <a href="#contact" className="px-6 py-3 border border-charcoal-light rounded-lg hover:bg-charcoal-light text-white transition font-bold">Contact Me</a>
           </div>
           <div className="mt-8 flex justify-center md:justify-start gap-6 text-3xl">
-            <a href="https://github.com/YOUR_USERNAME" className="text-gray-400 hover:text-white transition hover:scale-110"><FaGithub /></a>
-            <a href="https://linkedin.com/in/YOUR_USERNAME" className="text-gray-400 hover:text-accent transition hover:scale-110"><FaLinkedin /></a>
-            <a href="mailto:email@example.com" className="text-gray-400 hover:text-accent transition hover:scale-110"><FaEnvelope /></a>
+            <a href="https://github.com/iamagenus" className="text-gray-400 hover:text-white transition hover:scale-110"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/brandon-lewandowski-669949190" className="text-gray-400 hover:text-accent transition hover:scale-110"><FaLinkedin /></a>
+            <a href="mailto:brandonlewandowski@gmail.com" className="text-gray-400 hover:text-accent transition hover:scale-110"><FaEnvelope /></a>
           </div>
         </motion.div>
 
