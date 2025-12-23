@@ -89,7 +89,7 @@ function App() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h3 className="text-2xl font-bold mb-6 text-gray-300">My Tech Stack</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {["React", "Tailwind CSS", "JavaScript", "Python", "Scrapy", "Excel / Data"].map((skill) => (
+            {["React", "Tailwind CSS", "JavaScript", "Python", "WordPress", "Excel / Data"].map((skill) => (
               <span key={skill} className="px-4 py-2 bg-charcoal-light text-accent rounded-full font-semibold border border-charcoal shadow-sm transition hover:shadow-lg hover:shadow-accent/40 hover:-translate-y-1 cursor-default">
                 {skill}
               </span>
